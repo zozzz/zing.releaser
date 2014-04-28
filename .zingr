@@ -1,0 +1,37 @@
+[zingr]
+vcs = git
+ref_file = setup.py
+
+[target]
+workflow = clean, test, bump, dist
+
+[target:preview]
+suffix = preview
+branch = preview
+
+[target:stable]
+branch = master
+remove_suffix = True
+
+[target:rc]
+suffix = rc
+inc_suffix = True
+branch = master
+
+[target:dev]
+suffix = dev
+branch = dev
+workflow = bump
+
+[phase:clean]
+command = python setup.py clean
+
+[phase:test]
+command = tox
+
+[phase:dist]
+command = python setup.py sdis
+
+[phase:bump]
+vcs_commit = True
+

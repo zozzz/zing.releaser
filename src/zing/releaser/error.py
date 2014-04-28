@@ -1,0 +1,4 @@
+
+
+class ReleaserError(Exception):
+	pass
